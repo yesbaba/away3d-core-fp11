@@ -400,6 +400,7 @@ package away3d.containers
 		private function updateCamera() : void
 		{
 			_camera.lens.aspectRatio = _aspectRatio;
+			_camera.invalidateViewProjection();
 			_entityCollector.camera = _camera;
 
 			if (_filter3DRenderer) {

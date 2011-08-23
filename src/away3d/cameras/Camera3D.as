@@ -21,7 +21,7 @@ package away3d.cameras
 	 */
 	public class Camera3D extends Entity
 	{
-		private var _viewProjectionInvalid : Boolean = true;
+		protected var _viewProjectionInvalid : Boolean = true;
 		private var _renderToTextureProjectionInvalid : Boolean = true;
 		private var _renderToTextureProjection : Matrix3D = new Matrix3D();
 		private var _viewProjection : Matrix3D = new Matrix3D();
@@ -95,6 +95,14 @@ package away3d.cameras
 			return _viewProjection;
 		}
 
+		/**
+		 * for view projection to be invalid
+		 */
+		public function invalidateViewProjection():void
+		{
+			_viewProjectionInvalid = true;
+		}
+		
 		public function get renderToTextureProjection() : Matrix3D
 		{
 			if (_renderToTextureProjectionInvalid) {

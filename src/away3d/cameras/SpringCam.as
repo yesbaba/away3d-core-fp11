@@ -91,10 +91,9 @@
     
     public override function get viewProjection():Matrix3D
     {
-      if(target != null)
+      if(target != null && _viewProjectionInvalid)
       {
-      	
-      	_xPositionOffset = target.transform.deltaTransformVector(positionOffset);
+		_xPositionOffset = target.transform.deltaTransformVector(positionOffset);
       	_xLookOffset = target.transform.deltaTransformVector(lookOffset);
       	
       	_desiredPosition = target.position.add(_xPositionOffset);
@@ -122,7 +121,8 @@
 			
 		_viewProjection.copyFrom(inverseSceneTransform);
 		_viewProjection.append(this.lens.matrix);
-				
+		
+		_viewProjectionInvalid = false;				
       }
       
       return this._viewProjection;
